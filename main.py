@@ -36,6 +36,7 @@ for name_file in files:
         if address in WALLETS:
             total += amount
             eligble_wallets.append(address)
+            print(f'{address} : {amount}')
 
 print(f'\nCONGRATULATIONS! YOUR $STRK DROP : {int(total)}\n')
 print(f'{len(eligble_wallets)} eligble wallets\n')
