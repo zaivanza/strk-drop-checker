@@ -13,7 +13,15 @@ def call_json(result: list | dict, filepath: Path | str):
     with open(f"{filepath}.json", "w") as file:
         json.dump(result, file, indent=4, ensure_ascii=False)
 
+def modify_string(address):
+    address = address[2:]
+    while len(str(address)) < 64:
+        address = "0" + address
+    address = '0x' + address
+    return address
+
 WALLETS = [address.lower() for address in read_txt("wallets.txt")]
+WALLETS = [modify_string(wallet) for wallet in WALLETS]
 
 files = [
     "starknet-0.json",
